@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { gadgetsdetails } from './gadgetdetail';
 import { ActivatedRoute } from '@angular/router';
-import { GadgetdetailserviceService } from '../gadgetdetailservice.service';
+import { MygadgetsserviceService } from '../mygadgetsservice.service';
 import { Location } from '@angular/common';
 @Component({
   selector: 'app-gadgetsdetails',
@@ -12,13 +12,13 @@ import { Location } from '@angular/common';
 })
 export class GadgetsdetailsComponent {
   gadgetdetail?:gadgetsdetails;
-  constructor(private activatedroute:ActivatedRoute, private location:Location,private gadgetdetailservice:GadgetdetailserviceService){}
+  constructor(private activatedroute:ActivatedRoute, private location:Location,private gadgetservice:MygadgetsserviceService){}
   ngOnInit(){
    this.getcharacterdetail()
   }
   getcharacterdetail(){
    const id=Number(this.activatedroute.snapshot.paramMap.get('id'));
-   this.gadgetdetailservice.getgadgetdetail(id).subscribe(charac=>this.gadgetdetail=charac);
+   this.gadgetservice.getgadgetdetail(id).subscribe(charac=>this.gadgetdetail=charac);
   }
   goback(){
     this.location.back();
