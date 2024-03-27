@@ -1,0 +1,9 @@
+<div *ngIf="list" class="list">
+    <ul>
+        <li *ngFor="let l of list">
+            <a routerLink="/character/{{l.id}}">{{l.name}}</a>
+            <button type="button" (click)="delete(l)">Delete</button>
+        </li>
+    </ul>
+</div>
+
